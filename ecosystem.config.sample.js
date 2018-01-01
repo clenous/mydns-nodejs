@@ -17,7 +17,9 @@ module.exports = {
       host: 'HOSTNAME',
       port: '22',
       env: {
-        CONFIG: '[{"ID":"mydns*******","PASSWORD":"******","SLACK_URL":"https://hooks.slack.com/services/**************************************"}]'
+        ID: 'mydns******',
+        PASSWORD: '********',
+        SLACK_URL: 'https://hooks.slack.com/services/******/**************************'
       },
       ref: 'origin/master',
       repo: 'https://github.com/hrntknr/mydns-nodejs.git',
