@@ -24,7 +24,7 @@ function main() {
 
 class MyDns {
   constructor(account) {
-    this.MasterID = account.MasterID;
+    this.ID = account.ID;
     this.Password = account.Password;
     this.protocol = account.protocol;
     this.notify = account.notify;
@@ -39,7 +39,7 @@ class MyDns {
       else if(this.protocol=='ipv6')
         url='http://ipv6.mydns.jp/login.html';
       else return reject();
-      request(url, {'auth': {'user': this.MasterID, 'pass': this.Password}}, (err, response)=>{
+      request(url, {'auth': {'user': this.ID, 'pass': this.Password}}, (err, response)=>{
         if(err) {
           this._notify(err, null);
           resolve();
@@ -59,11 +59,11 @@ class MyDns {
   }
 
   _bodyParser(body) {
-    const MasterID = body.match(/<DT>MASTERID :<\/DT><DD>(mydns\d+)<\/DD>/)[1];
+    const ID = body.match(/<DT>ID :<\/DT><DD>(mydns\d+)<\/DD>/)[1];
     const daytime = body.match(/<DT>ACCESS DAYTIME:<\/DT><DD>(\d+\/\d+\/\d+ \d+:\d+)<\/DD>/)[1];
     const address = body.match(/<DT>REMOTE ADDRESS:<\/DT><DD>(.+)<\/DD>/)[1];
     return {
-      MasterID: MasterID,
+      ID: ID,
       daytime: daytime,
       address: address
     };
@@ -71,7 +71,7 @@ class MyDns {
 
   _formatter(format, data, locale) {
     format = format.replace('{ADDR}', data.address);
-    format = format.replace('{ID}', data.MasterID);
+    format = format.replace('{ID}', data.ID);
     format = format.replace(/{TIME\((.*)\)}/, (_, format)=>{
       return moment(data.daytime, 'YYYY/MM/DD mm:ss').locale(locale?locale:'en').format(format);
     });
