@@ -8,20 +8,14 @@ module.exports = {
       ID: ID || 'mydns******',
       Password: PASSWORD || '***********',
       protocol: 'all',
+      format: '{ID}\n{ADDR}',
       //all ipv6 ipv4
       notify: [
         {
           type: 'slack',
-          url: SLACK_URL || 'https://hooks.slack.com/services/**************************************',
-          locale: 'en',
-          format: '{ID}\n{ADDR}'
-        },
-        {
-          type: 'console',
-          locale: 'en',
-          format: '{TIME(lll)} {ID} {ADDR}'
+          url: SLACK_URL || 'https://hooks.slack.com/services/**************************************'
         }
       ]
     }
   ]
-};
+}
