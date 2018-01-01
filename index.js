@@ -33,7 +33,7 @@ class MyDns {
     return new Promise((resolve, reject)=>{
       let url;
       if(this.protocol=='all')
-        url='http://mydns.jp/login.html';
+        url='http://www.mydns.jp/login.html';
       else if(this.protocol=='ipv4')
         url='http://ipv4.mydns.jp/login.html';
       else if(this.protocol=='ipv6')
@@ -59,7 +59,7 @@ class MyDns {
   }
 
   _bodyParser(body) {
-    const ID = body.match(/<DT>ID :<\/DT><DD>(mydns\d+)<\/DD>/)[1];
+    const ID = body.match(/<DT>MASTERID :<\/DT><DD>(mydns\d+)<\/DD>/)[1];
     const daytime = body.match(/<DT>ACCESS DAYTIME:<\/DT><DD>(\d+\/\d+\/\d+ \d+:\d+)<\/DD>/)[1];
     const address = body.match(/<DT>REMOTE ADDRESS:<\/DT><DD>(.+)<\/DD>/)[1];
     return {

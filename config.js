@@ -7,7 +7,7 @@ module.exports = {
     {
       ID: ID || 'mydns******',
       Password: PASSWORD || '***********',
-      protocol: 'ipv4',
+      protocol: 'all',
       //all ipv6 ipv4
       notify: [
         {
