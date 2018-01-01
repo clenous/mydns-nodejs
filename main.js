@@ -10,9 +10,17 @@ module.exports = async accounts=>{
 async function updateDns(id, password, protocol, format) {
   let message = ''
   if(protocol=='all' || protocol== 'ipv4')
-    message += `${formatter(format, resultParser(await updateDnsV4(id, password)))}\n`
+    try {
+      message += `${formatter(format, resultParser(await updateDnsV4(id, password)))}\n`
+    }catch(e) {
+      message += e.stack
+    }
   if(protocol=='all' || protocol== 'ipv6')
-    message += `${formatter(format, resultParser(await updateDnsV6(id, password)))}\n`
+    try {
+      message += `${formatter(format, resultParser(await updateDnsV6(id, password)))}\n`
+    }catch(e) {
+      message += e.stack
+    }
   return message
 }
 
