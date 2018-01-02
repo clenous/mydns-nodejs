@@ -32,5 +32,10 @@ module.exports = (()=>{
           :[]
       })
     }
+    return {
+      cron: '00 * * * *',
+      timeZone: 'Asia/Tokyo',
+      accounts
+    }
   }
 })()
