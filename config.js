@@ -20,7 +20,7 @@ module.exports = (()=>{
   }else {
     const accounts = []
     for(let i=1;true;i++) { //eslint-disable-line
-      if(process.env[`ID_${i}`])break
+      if(!process.env[`ID_${i}`])break
       accounts.push({
         ID: process.env[`ID_${i}`],
         Password: process.env[`PASSWORD_${i}`],
